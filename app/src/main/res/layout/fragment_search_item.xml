@@ -4,7 +4,7 @@
     android:id="@+id/my_image_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    fresco:actualImageScaleType="centerInside"
+    fresco:actualImageScaleType="centerCrop"
     fresco:backgroundImage="@color/blue"
     fresco:fadeDuration="300"
     fresco:failureImage="@color/red"

@@ -13,4 +13,10 @@ public class WaterfallLayoutManager extends RecyclerView.LayoutManager {
                 RecyclerView.LayoutParams.MATCH_PARENT,
                 RecyclerView.LayoutParams.WRAP_CONTENT);
     }
+
+    @Override
+    public boolean canScrollVertically() {
+        //We do allow scrolling
+        return true;
+    }
 }

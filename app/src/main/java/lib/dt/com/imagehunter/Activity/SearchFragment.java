@@ -4,8 +4,8 @@ import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +45,15 @@ public class SearchFragment extends Fragment {
 
         recycler = (RecyclerView) view.findViewById(R.id.recycler);
 
-        recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position % 3 == 0 ? 2 : 1;
+            }
+        });
+//        gridLayoutManager.setStackFromEnd(true);
+        recycler.setLayoutManager(gridLayoutManager);
         recycler.setAdapter(new SearchAdapter());
         recycler.setItemAnimator(new DefaultItemAnimator());
     }
